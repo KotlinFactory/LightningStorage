@@ -4,13 +4,15 @@ import de.leonhard.storage.util.FileUtils;
 import java.io.File;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import yapion.YAPIONUtils;
 
 @Getter
 @RequiredArgsConstructor
 public enum FileType {
   JSON("json"),
   YAML("yml"),
-  TOML("toml");
+  TOML("toml"),
+  YAPION(YAPIONUtils.FILE_ENDING);
 
   private final String extension;
 

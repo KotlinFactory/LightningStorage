@@ -1,0 +1,17 @@
+# More help see
+# https://github.com/toml-lang/toml/blob/master/tests/example.toml
+
+[main]
+comment = "This is a Comment"
+Array = [
+    "This is a Array",
+    0,
+    true,
+    false,
+    "It holds values"
+]
+
+[object]
+comment = "This is a Comment"
+
+# There are no null values and keys

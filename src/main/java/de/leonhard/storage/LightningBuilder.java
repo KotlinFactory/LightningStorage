@@ -132,4 +132,8 @@ public final class LightningBuilder {
   public Json createJson() {
     return new Json(this.name, this.path, this.inputStream, this.reloadSettings);
   }
+
+  public YAPION createYAPION() {
+    return new YAPION(this.name, this.path, this.inputStream, this.reloadSettings);
+  }
 }
