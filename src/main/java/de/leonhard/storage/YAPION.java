@@ -8,6 +8,7 @@ import de.leonhard.storage.util.FileUtils;
 import lombok.NonNull;
 import org.jetbrains.annotations.Nullable;
 import yapion.exceptions.YAPIONException;
+import yapion.hierarchy.output.FileOutput;
 import yapion.hierarchy.types.YAPIONObject;
 import yapion.parser.YAPIONParser;
 import yapion.serializing.YAPIONDeserializer;
@@ -67,7 +68,7 @@ public class YAPION extends FlatFile {
 
     @Override
     protected void write(FileData data) throws IOException {
-        YAPIONSerializer.serialize(data.toMap()).toOutputStream(new FileOutputStream(file));
+        YAPIONSerializer.serialize(data.toMap()).toYAPION(new FileOutput(file));
     }
 
 }
