@@ -2,9 +2,7 @@
 # SimplixStorage
 SimplixStorage - A Library to store data in a better way.
 
-![](https://i.imgur.com/tDf7NVA.png)
-
-[![](https://jitpack.io/v/simplix-softworks/simplixstorage.svg)](https://jitpack.io/#simplix-softworks/simplixstorage)
+[![](https://jitpack.io/v/simplix-softworks/simplixstorage.svg)](https://jitpack.io/#simplix-softworks/simplixstorage) [![Discord](https://img.shields.io/discord/752533664696369204?label=Discord)](https://discord.simplixsoft.com/) ![GitHub](https://img.shields.io/github/license/Simplix-Softworks/SimplixStorage)
 
 Do you want to save your config files easily and **independently** from Bukkit or BungeeCord?<br>
 Want to do more than just use simple .yml files to store data?<br>
@@ -30,8 +28,7 @@ If you have any ideas to add or issues just open a issue page. I will do my best
 For more details, see the [wiki](https://github.com/Simplix-Softworks/SimplixStorage/wiki) 
 
 <br>
-At the moment SimplixStorage supports four file types:
-
+At the moment SimplixStorage supports three file types:
 <br>
 
 #### Json:
@@ -40,7 +37,6 @@ It is much faster than yaml files and is therefore better suited for storing
  larger amounts of data, such as player data (rank, money, playtime, etc).
 >https://stackoverflow.com/questions/2451732/how-is-it-that-json-serialization-is-so-much-faster-than-yaml-serialization-in-p/2452043#2452043
 
-
 #### Yaml:
 Yaml files are not as fast as json files, but they are easier 
 to read and are therefore more suitable than configuration files, 
@@ -48,99 +44,6 @@ as you often find them in bukkit plugins in the form of "config.yml".
 
 #### Toml:
 Toml is a compromise between the readybility of Yaml and the performance of Json, thus being a quite good way to go.
-
-
-#### LightningFile
-LightningFile is our own implementation of a config file format. It has quite good performance (about as fast as Json) but is way more readable.
-
-#### How to setup
-
-1. Place this in your repository-section: 
-
-Maven:
-```xml
-<!-- JitPack-Repo -->
-<repository>
-  <id>jitpack.io</id>
-  <url>https://jitpack.io</url>
-</repository>
-```  
- 
-Gradle:
-```groovy
-repositories {
-    maven {
-        url "https://jitpack.io"
-    }
-}
-```    
-
-
-2. Place this in your dependency-section: 
-
-Version:
-Find the latest version of SimplixStorage [here](https://github.com/Simplix-Softworks/SimplixStorage/releases/)
-
-Maven:
-
-```xml
-<dependency>
-  <groupId>com.github.simplix-softworks</groupId>
-  <artifactId>SimplixStorage</artifactId> 
-  <version>VERSION <!-- Replace me with the current version --></version> 
-</dependency>
-```       
-
-Gradle:
-```groovy
-dependencies {
-    compile 'com.github.simplix-softworks:SimplixStorage:VERSION /* Replace me with the current
-    version */'
-}
-```
-    
-
-3. Important! Use a shade plugin to make sure that the library is shaded into your final .jar file when your
-plugin is compiled. 
-The relocation is optional but heavily recommended. (Just change 'yourpackage.yourname' to the needed values) 
-
-Maven:
-```xml
-<plugin>
-  <groupId>org.apache.maven.plugins</groupId>
-  <artifactId>maven-shade-plugin</artifactId>
-  <version>3.1.0</version>
-  <executions>
-    <execution>
-    <phase>package</phase>
-    <goals>
-      <goal>shade</goal>
-    </goals>
-    </execution>
-  </executions>
-  <configuration>
-    <createDependencyReducedPom>false</createDependencyReducedPom>
-    <relocations>
-      <relocation>
-        <pattern>de.leonhard.storage</pattern>
-        <shadedPattern>yourpackage.yourname.storage</shadedPattern>
-      </relocation>
-    </relocations>
-  </configuration>
-</plugin>
-```      
-
-Gradle:
-```groovy
-plugins {
-    id 'java'
-    id 'application'
-    
-    // This is the 'shadow' plugin to shadow 'SimplixStorage' directly into your jar.
-    id 'com.github.johnrengelman.shadow' version '5.0.0'
-}
-```
-
 
 **Library's used:**
 

@@ -5,6 +5,7 @@ import de.leonhard.storage.internal.serialize.LightningSerializer;
 import de.leonhard.storage.util.ClassWrapper;
 import de.leonhard.storage.util.Valid;
 import java.util.*;
+import java.util.stream.Collectors;
 import lombok.NonNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -179,11 +180,18 @@ public interface DataStorage {
   /**
    * Get a List from a data-structure
    *
-   * @param key Path to StringList in data-structure.
-   * @return List
+   * @param key Path to List in data structure.
    */
   default List<?> getList(final String key) {
     return getOrDefault(key, new ArrayList<>());
+  }
+
+  /**
+   * Attempts to get a List of the given type
+   * @param key Path to List in data structure.
+   */
+  default <T> List<T> getListRaw(final String key) {
+    return getOrSetDefault(key, new ArrayList<>());
   }
 
   default List<String> getStringList(final String key) {
@@ -204,6 +212,14 @@ public interface DataStorage {
 
   default Map<?, ?> getMap(final String key) {
     return getOrDefault(key, new HashMap<>());
+  }
+
+  /**
+   * Attempts to get a map of the given type
+   * @param key Path to the Map in the data-structure
+   */
+  default <K, V> Map<K, V> getMapRaw(final String key) {
+    return getOrSetDefault(key, new HashMap<>());
   }
 
   /**
@@ -230,11 +246,30 @@ public interface DataStorage {
    *
    * @return Serialized instance of class.
    */
+  @Nullable
   default <T> T getSerializable(final String key, final Class<T> clazz) {
     if (!contains(key)) {
       return null;
     }
-    return LightningSerializer.deserialize(get(key), clazz);
+    Object raw = get(key);
+    if (raw == null) {
+      return null;
+    }
+    return LightningSerializer.deserialize(raw, clazz);
+  }
+
+  @Nullable
+  default <T> List<T> getSerializableList(final String key, final Class<T> type) {
+    if (!contains(key)) {
+      return null;
+    }
+
+    final List<?> rawList = getList(key);
+
+    return rawList
+        .stream()
+        .map(input -> LightningSerializer.deserialize(input, type))
+        .collect(Collectors.toList());
   }
 
   // ----------------------------------------------------------------------------------------------------

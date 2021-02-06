@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://maven.apache.org/POM/4.0.0"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <artifactId>lightningstorage</artifactId>
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <artifactId>simplixstorage</artifactId>
+  <version>3.2.1</version>
 
   <build>
     <defaultGoal>clean verify -U</defaultGoal>
@@ -145,7 +146,7 @@
       <artifactId>json</artifactId>
       <groupId>org.json</groupId>
       <scope>compile</scope>
-      <version>20190722</version>
+      <version>20200518</version>
     </dependency>
 
     <!-- YAPION -->
@@ -169,6 +170,12 @@
       <artifactId>annotations</artifactId>
       <groupId>org.jetbrains</groupId>
       <version>18.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>RELEASE</version>
+      <scope>test</scope>
     </dependency>
   </dependencies>
   <description>Store data in a better way</description>
@@ -236,6 +243,4 @@
   </scm>
 
   <url>https://github.com/JavaFactoryDev/LightningStorage</url>
-
-  <version>3.1.9</version>
 </project>

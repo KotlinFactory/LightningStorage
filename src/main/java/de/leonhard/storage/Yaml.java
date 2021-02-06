@@ -12,6 +12,7 @@ import de.leonhard.storage.internal.settings.DataType;
 import de.leonhard.storage.internal.settings.ReloadSettings;
 import de.leonhard.storage.util.FileUtils;
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -107,7 +108,7 @@ public class Yaml extends FlatFile {
 
     try {
       final Map<String, Object> data = new SimpleYamlReader(
-          new InputStreamReader(inputStream)).readToMap();
+          new InputStreamReader(inputStream, StandardCharsets.UTF_8)).readToMap();
 
       final FileData newData = new FileData(data, DataType.UNSORTED);
 

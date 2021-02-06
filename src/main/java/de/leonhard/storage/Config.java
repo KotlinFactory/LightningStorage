@@ -26,7 +26,7 @@ public class Config extends Yaml {
       final String name,
       @Nullable final String path,
       @Nullable final InputStream inputStream) {
-    this(name, path, null, null, ConfigSettings.PRESERVE_COMMENTS, DataType.SORTED);
+    this(name, path, inputStream, null, ConfigSettings.PRESERVE_COMMENTS, DataType.SORTED);
   }
 
   public Config(

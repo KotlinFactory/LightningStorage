@@ -2,6 +2,7 @@ package de.leonhard.storage.util;
 
 import java.util.*;
 import lombok.experimental.UtilityClass;
+import lombok.val;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -21,8 +22,10 @@ public class JsonUtils {
 
   public JSONObject getJsonFromMap(final Map<String, Object> map) throws JSONException {
     final JSONObject jsonData = new JSONObject();
-    for (final String key : map.keySet()) {
-      Object value = map.get(key);
+
+    for (val entry : map.entrySet()) {
+      String key = entry.getKey();
+      Object value = entry.getValue();
       if (value instanceof Map) {
         value = getJsonFromMap((Map<String, Object>) value);
       }
